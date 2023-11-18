@@ -60,6 +60,11 @@ pipeline{
                 sh "trivy image nkosenhlembatha/netflix:latest > trivyimage.txt" 
             }
         }
+        stage('Deploy to container'){
+            steps{
+                sh 'docker run -d --name netflix -p 8081:80 nkosenhlembatha/netflix:latest'
+            }
+        }
     }   
 }
 
