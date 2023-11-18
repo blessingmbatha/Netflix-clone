@@ -55,6 +55,11 @@ pipeline{
                 }
             }
         }
+        stage("TRIVY"){
+            steps{
+                sh "trivy image nkosenhlembatha/netflix:latest > trivyimage.txt" 
+            }
+        }
     }   
 }
 
